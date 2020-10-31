@@ -17,14 +17,23 @@ abstract class Function {
 	abstract forward(x: number): number;
 }
 
-export class Square extends Function {
+class Square extends Function {
 	public forward(x: number): number {
 		return x ** 2;
 	}
 }
 
-export class Exp extends Function {
+export function square(x: Variable): Variable {
+	const f = new Square();
+	return f.__call(x);
+}
+class Exp extends Function {
 	public forward(x: number): number {
 		return Math.exp(x);
 	}
+}
+
+export function exp(x: Variable): Variable {
+	const f = new Exp();
+	return f.__call(x);
 }
